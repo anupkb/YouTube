@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleNavbar } from "../utils/navbarSlice";
 import {
   HAMBURGER_ICON,
   YOUTUBE_LOGO,
@@ -7,15 +9,26 @@ import {
 } from "../utils/constants";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(toggleNavbar());
+  };
+
   return (
-    <header className="flex justify-between items-center p-2 bg-white shadow-md">
+    <header className="fixed top-0 left-0 w-full flex justify-between items-center p-2 bg-white shadow-md z-10">
       <div className="flex items-center space-x-4">
         <img
           src={HAMBURGER_ICON}
           alt="humBurgerMenu"
-          className="h-6 md:h-8 lg:h-9"
+          className="h-6 md:h-8 lg:h-9 cursor-pointer"
+          onClick={handleToggle}
         />
-        <img src={YOUTUBE_LOGO} alt="logo" className="h-8 md:h-10 lg:h-11" />
+        <img
+          src={YOUTUBE_LOGO}
+          alt="logo"
+          className="h-8 md:h-10 lg:h-11 cursor-pointer"
+        />
       </div>
 
       <div className="flex items-center flex-1 max-w-lg mx-4">
@@ -34,7 +47,7 @@ const Header = () => {
       </div>
 
       <div className="flex items-center space-x-4">
-        <img src={USER_ICON} alt="userIcon" className="h-8" />
+        <img src={USER_ICON} alt="userIcon" className="h-8 cursor-pointer" />
       </div>
     </header>
   );

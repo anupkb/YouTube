@@ -1,8 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const LeftNavbar = () => {
+  const isNavbarOpen = useSelector((state) => state.navbar.isNavbarOpen);
+
+  if (!isNavbarOpen) return null;
+
   return (
-    <div className="w-64 bg-white shadow-md h-screen p-4">
+    <div className="fixed top-16 left-0 w-52 bg-white shadow-md h-[calc(100vh-4rem)] p-4 overflow-y-auto">
       <ul className="space-y-2">
         <li className="flex items-center space-x-3 text-lg font-semibold text-gray-700 hover:text-red-600 cursor-pointer">
           <svg
@@ -223,57 +228,6 @@ const LeftNavbar = () => {
             />
           </svg>
           <span>Sports</span>
-        </li>
-        <li className="flex items-center space-x-3 text-lg font-semibold text-gray-700 hover:text-red-600 cursor-pointer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-          <span>Courses</span>
-        </li>
-        <li className="flex items-center space-x-3 text-lg font-semibold text-gray-700 hover:text-red-600 cursor-pointer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-          <span>Fashion & Beauty</span>
-        </li>
-        <li className="flex items-center space-x-3 text-lg font-semibold text-gray-700 hover:text-red-600 cursor-pointer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-          <span>Podcasts</span>
         </li>
       </ul>
     </div>
